@@ -7,7 +7,26 @@
     <title>Character</title>
     <style>
       /* animation */
+      @keyframes moveKkun {
+        0% {
+        }
 
+        25% {
+          transform: rotate(40deg);
+        }
+
+        50% {
+          transform: rotate(0deg);
+        }
+
+        75% {
+          transform: rotate(-40deg);
+        }
+
+        100% {
+          transform: rotate(0deg);
+        }
+      }
       @keyframes earRight {
         from {
           transform: rotate(-20deg);
@@ -34,6 +53,53 @@
         }
       }
 
+      @keyframes tongueLineScale {
+        form {
+          transform: rotate(90deg) scale(1);
+        }
+        to {
+          transform: rotate(90deg) scale(1.3);
+        }
+      }
+
+      @keyframes moveEyes {
+        0% {
+        }
+
+        25% {
+          transform: translate(0px, 0px);
+        }
+
+        50% {
+          transform: translate(10px, 0px);
+        }
+
+        75% {
+          transform: translate(10px, 10px);
+        }
+
+        100% {
+          transform: translate(0px, 10px);
+        }
+      }
+
+      @keyframes displayAngry {
+        from {
+          opacity: 0%;
+        }
+        to {
+          opacity: 100%;
+        }
+      }
+      @keyframes hideTongue {
+        from {
+          opacity: 100%;
+        }
+        to {
+          opacity: 0%;
+        }
+      }
+
       /* setting */
       :root {
         --pri: #ce705f;
@@ -55,15 +121,29 @@
       }
 
       body {
-        background: rgb(113, 212, 121);
+        background-image: url(./imgs/space_bg.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
       }
 
       .kkun {
         position: relative;
-        top: 100px;
+        top: 200px;
         margin: 50px auto;
         width: 400px;
         height: 380px;
+        animation: moveKkun 5s infinite alternate;
+      }
+
+      .kkun:hover .eyebrow,
+      .kkun:hover .tooth {
+        animation: displayAngry 1s alternate forwards;
+      }
+      .kkun:hover .tongue,
+      .kkun:hover .tongueline {
+        animation: hideTongue 1s alternate forwards;
       }
 
       .kkun .ear {
@@ -130,6 +210,7 @@
         width: 20px;
         border-radius: 50%;
         background-color: #fff;
+        animation: moveEyes 5s infinite alternate;
       }
       .letina.right {
         left: 125px;
@@ -165,7 +246,6 @@
         width: 50px;
         height: 50px;
         border-bottom: 10px solid #000;
-
         border-radius: 50%;
         top: 185px;
         right: 150px;
@@ -191,11 +271,11 @@
         z-index: -1;
         background-color: #c94f53;
         border-radius: 30% 30% 50% 50%;
-        animation: tongueScale 2s infinite alternate;
+        animation: tongueScale 1.5s infinite alternate;
       }
       .tongueline {
         position: absolute;
-        top: 242px;
+        top: 240px;
         left: 183px;
         width: 30px;
         background-color: #000;
@@ -203,6 +283,26 @@
         border-radius: 30%;
         transform: rotate(90deg);
         border-radius: 50% 50% 50% 50%;
+        animation: tongueLineScale 1.5s infinite alternate;
+      }
+
+      .kkun .eyebrow {
+        opacity: 0%;
+        position: absolute;
+        top: 120px;
+        width: 50px;
+        background-color: #000;
+        border: 4px solid #000;
+        border-radius: 30%;
+      }
+
+      .eyebrow.right {
+        transform: rotate(40deg);
+        left: 130px;
+      }
+      .eyebrow.left {
+        transform: rotate(-40deg);
+        right: 130px;
       }
 
       .kkun .face .hair-back {
@@ -210,8 +310,83 @@
         width: 120%;
         left: 50%;
         top: -120px;
-        z-index: -1;
+        z-index: -2;
         transform: translateX(-50%);
+      }
+
+      .kkun .helmet {
+        position: absolute;
+        top: -65px;
+        left: -130px;
+        width: 660px;
+        height: 550px;
+        background-color: #fff;
+        opacity: 30%;
+        z-index: 3;
+        border: 5px solid #232323;
+        border-radius: 50%;
+      }
+      .helmetline {
+        position: absolute;
+        top: -15px;
+        left: -50px;
+        width: 100px;
+        height: 225px;
+        z-index: 4;
+        transform: rotate(40deg);
+        border-left: 20px solid white;
+        border-radius: 50%;
+      }
+
+      .kkun .body {
+        position: absolute;
+        top: 350px;
+        left: 50px;
+        width: 285px;
+        height: 135px;
+        z-index: -3;
+        background-color: var(--sec);
+        border: 5px solid #232323;
+        border-radius: 50%;
+      }
+      .kkun .neckline {
+        position: absolute;
+        top: 375px;
+        left: 78px;
+        width: 225px;
+        height: 25px;
+        background-color: red;
+        border: 5px solid #232323;
+        border-radius: 30%;
+      }
+      .neckline .point {
+        position: absolute;
+        top: -5px;
+        left: 100px;
+        height: 25px;
+        width: 25px;
+        border: 5px solid #232323;
+        background-color: yellow;
+      }
+
+      .kkun .tooth {
+        position: absolute;
+        opacity: 0;
+        top: 240px;
+        width: 30px;
+        height: 10px;
+        background-color: #fff;
+        border: 2px solid #232323;
+      }
+      .tooth.left {
+        transform: rotate(90deg);
+        border-radius: 40% 29% 100% 0% / 0% 0% 100% 100%;
+        left: 155px;
+      }
+      .tooth.right {
+        transform: rotate(-90deg);
+        border-radius: 40% 29% 0% 100% / 0% 0% 100% 100%;
+        right: 155px;
       }
     </style>
   </head>
@@ -224,6 +399,8 @@
         <div class="tongue"></div>
         <div class="mouth left"></div>
         <div class="mouth right"></div>
+        <div class="tooth left"></div>
+        <div class="tooth right"></div>
         <div class="eye right"></div>
         <div class="letina right"></div>
         <div class="eye left"></div>
@@ -231,6 +408,14 @@
         <div class="nose"></div>
         <div class="tongue"></div>
         <div class="tongueline"></div>
+        <div class="eyebrow left"></div>
+        <div class="eyebrow right"></div>
+      </div>
+      <div class="helmet"></div>
+      <div class="helmetline"></div>
+      <div class="body"></div>
+      <div class="neckline">
+        <div class="point"></div>
       </div>
     </div>
   </body>
